@@ -3,21 +3,12 @@
     {
       "src": "elementDetection/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
-    },
-    {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": { "distDir": ".vercel/output" }
+      "config": { "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
     {
-      "src": "/static/(.)",
-      "dest": "/staticfiles/$1"
-    },
-    {
-      "src": "/(.)",
+      "src": "/(.*)",
       "dest": "elementDetection/wsgi.py"
     }
   ]
