@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv11 Web Element Detection API</title>
+    <!-- Make sure this path is correct -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>YOLOv11 Web Element Detection</h1>
+            <p>Upload webpage screenshots and detect UI elements</p>
+        </header>
+
+        <div class="tab-content active" id="demo">
+            <div class="model-test">
+                <h2>Test the Model</h2>
+                <p>Upload a webpage screenshot and see the YOLOv11 model detect UI elements</p>
+
+                <div class="input-area">
+                    <div class="upload-area" id="drop-area">
+                        <div class="upload-placeholder">
+                            <img src="{% static 'img/image-placeholder.svg' %}" alt="Upload placeholder">
+                            <p>Drag & drop your webpage screenshot here</p>
+                            <p class="or">or</p>
+                            <label for="file-input" class="browse-btn">Browse Files</label>
+                            <input type="file" id="file-input" accept="image/png,image/jpeg,image/jpg,image/webp"
+                                hidden>
+                        </div>
+                        <div class="preview-container" id="preview-container" hidden>
+                            <img id="preview-image" src="#" alt="Preview">
+                            <button id="remove-image" class="remove-btn">✕</button>
+                        </div>
+                    </div>
+                    <button id="detect-btn" class="detect-btn" disabled>Detect Elements</button>
+                </div>
+
+                <div id="detection-results" hidden>
+                    <h3>Detection Results:</h3>
+                    <div class="results-container">
+                        <div id="results-placeholder">
+                            <p>Upload and process an image to see detection results</p>
+                        </div>
+                        <div id="detection-image-container"></div>
+                    </div>
+
+                    <div id="detection-data">
+                        <table id="detection-table">
+                            <thead>
+                                <tr>
+                                    <th>Class ID</th>
+                                    <th>Class Name</th>
+                                    <th>Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detection-tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Make sure this path is correct -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
